@@ -1,0 +1,59 @@
+<h1>Locations</h1>
+<!--TODO add a nice loading indicator-->
+<mat-card *ngIf="!(isLoading$ | async)">
+  <mat-card-actions>
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="openUpsertDialog()"
+    >
+      Add
+    </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <table mat-table [dataSource]="locations$ | async" class="">
+      <ng-container matColumnDef="lat">
+        <th mat-header-cell *matHeaderCellDef>Latitude</th>
+        <td mat-cell *matCellDef="let element">{{ element.lat }}</td>
+      </ng-container>
+      <ng-container matColumnDef="lon">
+        <th mat-header-cell *matHeaderCellDef>Longitude</th>
+        <td mat-cell *matCellDef="let element">{{ element.lon }}</td>
+      </ng-container>
+      <ng-container matColumnDef="address_line_1">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element">{{ element.address_line_1 }}</td>
+      </ng-container>
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef>City</th>
+        <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+      </ng-container>
+      <ng-container matColumnDef="property_value">
+        <th mat-header-cell *matHeaderCellDef>Property Value</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.property_value }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="business_interruption_value">
+        <th mat-header-cell *matHeaderCellDef>Business Interruption Value</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.business_interruption_value }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon (click)="openUpsertDialog(element)">edit</mat-icon>
+          <mat-icon (click)="onDeleteDialog(element.id)">delete</mat-icon>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

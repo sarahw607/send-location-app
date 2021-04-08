@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ data ? "Edit" : "Add" }} Location</h2>
+<div mat-dialog-content>
+  <form [formGroup]="locationForm">
+    <mat-form-field>
+      <mat-label>Latitude</mat-label>
+      <input matInput type="number" formControlName="lat" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Longitude</mat-label>
+      <input matInput type="number" formControlName="lon" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input matInput type="text" formControlName="address_line_1" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput type="text" formControlName="city" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Country</mat-label>
+      <input matInput type="text" formControlName="country" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Property Value</mat-label>
+      <input matInput type="text" formControlName="property_value" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Business Interruption Value</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="business_interruption_value"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button type="button" mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button
+    type="button"
+    color="primary"
+    mat-raised-button
+    (click)="onYesClick()"
+  >
+    Save
+  </button>
+</div>
